@@ -1,0 +1,193 @@
+/* Shared styles for all lesson pages */
+
+/* Body and layout */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    background: #f5f5f5;
+}
+
+/* Header section */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0 0 10px 0;
+}
+
+.header p {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+/* Navigation */
+.nav {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav a {
+    color: #667eea;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main content area */
+.content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+h2 {
+    color: #667eea;
+    border-bottom: 2px solid #764ba2;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #764ba2;
+    margin-top: 20px;
+}
+
+/* Code blocks */
+.code-block {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 15px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.code-block pre {
+    margin: 0;
+}
+
+code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    color: #c7254e;
+}
+
+/* Example boxes */
+.example {
+    background: #e8f4f8;
+    border-left: 4px solid #2196F3;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+/* Exercise boxes */
+.exercise {
+    background: #fff9e6;
+    border-left: 4px solid #ff9800;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+/* Result/demo boxes */
+.result-box {
+    border: 2px solid #4CAF50;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    background: white;
+}
+
+/* Tip boxes */
+.tip {
+    background: #f0f4ff;
+    border-left: 4px solid #667eea;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+/* Tables (for lesson 2) */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #667eea;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Form elements styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Buttons */
+button,
+.demo-button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+button:hover,
+.demo-button:hover {
+    background: #45a049;
+}
+
+/* Demo specific styles */
+.demo-box {
+    padding: 20px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Lists */
+ul, ol {
+    line-height: 1.8;
+}

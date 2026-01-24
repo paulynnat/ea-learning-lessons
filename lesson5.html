@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5: JavaScript Basics</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+    <link rel="stylesheet" href="lesson5.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 5: JavaScript Basics</h1>
+        <p>Learn to make your web pages interactive and dynamic!</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson4.html">Previous Lesson</a>
+        <a href="lesson6.html">Next Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>What JavaScript is and how to add it to your page</li>
+            <li>Variables and data types</li>
+            <li>Functions and how to use them</li>
+            <li>Basic DOM manipulation</li>
+            <li>Console.log for debugging</li>
+        </ul>
+
+        <h2>What is JavaScript?</h2>
+        <p><strong>JavaScript</strong> is a programming language that makes web pages interactive. While HTML provides structure and CSS provides style, JavaScript provides behavior and interactivity.</p>
+        
+        <p><strong>Think of it this way:</strong></p>
+        <ul>
+            <li><strong>HTML</strong> = Skeleton (structure)</li>
+            <li><strong>CSS</strong> = Skin (appearance)</li>
+            <li><strong>JavaScript</strong> = Muscles (behavior and movement)</li>
+        </ul>
+
+        <div class="tip">
+            <strong>Key Concept:</strong> JavaScript can change HTML content, modify CSS styles, respond to user actions, validate data, and much more!
+        </div>
+
+        <h2>Adding JavaScript to Your Page</h2>
+        
+        <h3>1. Inline JavaScript (Not Recommended)</h3>
+        <div class="code-block">
+<pre>&lt;button onclick="alert('Hello!')"&gt;Click Me&lt;/button&gt;</pre>
+        </div>
+
+        <h3>2. Internal JavaScript</h3>
+        <div class="code-block">
+<pre>&lt;script&gt;
+    // Your JavaScript code here
+    console.log('Hello, JavaScript!');
+&lt;/script&gt;</pre>
+        </div>
+
+        <h3>3. External JavaScript (Best Practice!)</h3>
+        <div class="code-block">
+<pre>&lt;script src="script.js"&gt;&lt;/script&gt;</pre>
+        </div>
+
+        <div class="tip">
+            <strong>Best Practice:</strong> Put your <code>&lt;script&gt;</code> tag at the end of the <code>&lt;body&gt;</code> section (just before <code>&lt;/body&gt;</code>) so the page loads before JavaScript runs.
+        </div>
+
+        <h2>Variables</h2>
+        <p>Variables store data. JavaScript has three ways to declare variables:</p>
+
+        <div class="code-block">
+<pre>// let - can be reassigned (use this most of the time)
+let name = "John";
+let age = 25;
+
+// const - cannot be reassigned (use for values that don't change)
+const PI = 3.14159;
+const website = "example.com";
+
+// var - old way, avoid using
+var oldVariable = "Don't use var in modern JavaScript";</pre>
+        </div>
+
+        <h3>Data Types</h3>
+        <div class="code-block">
+<pre>// String (text)
+let firstName = "Sarah";
+let lastName = 'Johnson';  // Single or double quotes work
+
+// Number
+let age = 30;
+let price = 19.99;
+
+// Boolean (true/false)
+let isStudent = true;
+let isMarried = false;
+
+// Array (list of values)
+let colors = ["red", "green", "blue"];
+let numbers = [1, 2, 3, 4, 5];
+
+// Object (collection of properties)
+let person = {
+    name: "John",
+    age: 25,
+    city: "New York"
+};</pre>
+        </div>
+
+        <h2>String Operations</h2>
+        <div class="code-block">
+<pre>let firstName = "John";
+let lastName = "Doe";
+
+// Concatenation (joining strings)
+let fullName = firstName + " " + lastName;  // "John Doe"
+
+// Template literals (modern way, using backticks)
+let greeting = `Hello, my name is ${firstName} ${lastName}`;
+
+// String methods
+let text = "Hello World";
+text.length;          // 11
+text.toLowerCase();   // "hello world"
+text.toUpperCase();   // "HELLO WORLD"
+text.includes("World"); // true</pre>
+        </div>
+
+        <h2>Math Operations</h2>
+        <div class="code-block">
+<pre>let a = 10;
+let b = 3;
+
+// Basic operators
+let sum = a + b;        // 13
+let difference = a - b; // 7
+let product = a * b;    // 30
+let quotient = a / b;   // 3.333...
+let remainder = a % b;  // 1 (modulo - remainder after division)
+
+// Increment and decrement
+let count = 5;
+count++;   // count is now 6
+count--;   // count is now 5 again
+
+// Math object
+Math.round(4.7);    // 5
+Math.ceil(4.1);     // 5 (round up)
+Math.floor(4.9);    // 4 (round down)
+Math.random();      // Random number between 0 and 1</pre>
+        </div>
+
+        <h2>Functions</h2>
+        <p>Functions are reusable blocks of code. They help organize your code and avoid repetition.</p>
+
+        <h3>Function Declaration</h3>
+        <div class="code-block">
+<pre>// Basic function
+function greet() {
+    console.log("Hello!");
+}
+
+// Call the function
+greet();  // Outputs: Hello!
+
+// Function with parameters
+function greetPerson(name) {
+    console.log("Hello, " + name + "!");
+}
+
+greetPerson("Sarah");  // Outputs: Hello, Sarah!
+
+// Function with return value
+function add(a, b) {
+    return a + b;
+}
+
+let result = add(5, 3);  // result is 8</pre>
+        </div>
+
+        <h3>Arrow Functions (Modern Syntax)</h3>
+        <div class="code-block">
+<pre>// Traditional function
+function multiply(a, b) {
+    return a * b;
+}
+
+// Arrow function (shorter syntax)
+const multiply = (a, b) => {
+    return a * b;
+};
+
+// Even shorter (when just returning a value)
+const multiply = (a, b) => a * b;</pre>
+        </div>
+
+        <h2>DOM Manipulation</h2>
+        <p><strong>DOM</strong> stands for <strong>Document Object Model</strong>. It's how JavaScript interacts with HTML elements.</p>
+
+        <h3>Selecting Elements</h3>
+        <div class="code-block">
+<pre>// Select by ID
+let element = document.getElementById("myElement");
+
+// Select by class name (returns array-like collection)
+let elements = document.getElementsByClassName("myClass");
+
+// Select by tag name
+let paragraphs = document.getElementsByTagName("p");
+
+// Modern selectors (preferred)
+let element = document.querySelector("#myElement");      // First match
+let elements = document.querySelectorAll(".myClass");    // All matches</pre>
+        </div>
+
+        <h3>Changing Content</h3>
+        <div class="code-block">
+<pre>// Change text content
+let heading = document.querySelector("h1");
+heading.textContent = "New Heading!";
+
+// Change HTML content
+let div = document.querySelector("#myDiv");
+div.innerHTML = "&lt;p&gt;New paragraph&lt;/p&gt;";</pre>
+        </div>
+
+        <h3>Changing Styles</h3>
+        <div class="code-block">
+<pre>let box = document.querySelector(".box");
+
+// Change individual styles
+box.style.backgroundColor = "blue";
+box.style.color = "white";
+box.style.padding = "20px";
+
+// Add/remove classes (better practice)
+box.classList.add("highlight");
+box.classList.remove("highlight");
+box.classList.toggle("active");  // Add if not present, remove if present</pre>
+        </div>
+
+        <h2>Console.log() for Debugging</h2>
+        <p>The console is your best friend for debugging! Open it with F12 or right-click and select Inspect, then go to the Console tab.</p>
+        
+        <div class="code-block">
+<pre>// Print messages
+console.log("Hello, console!");
+
+// Print variable values
+let name = "John";
+console.log(name);
+console.log("Name:", name);
+
+// Print multiple values
+let age = 25;
+console.log("Name:", name, "Age:", age);</pre>
+        </div>
+
+        <h2>Interactive Demo</h2>
+        <div class="result-box">
+            <button class="demo-button" id="demo-btn">Click to Run JavaScript!</button>
+            <div id="demo-output"></div>
+        </div>
+
+        <p><strong>The code behind the button:</strong></p>
+        <div class="code-block">
+<pre>// Get the button and output div
+let button = document.getElementById('demo-btn');
+let output = document.getElementById('demo-output');
+
+// Add click event listener
+button.addEventListener('click', function() {
+    // Create some variables
+    let name = "Student";
+    let score = Math.floor(Math.random() * 100);
+    
+    // Create a message
+    let message = `Hello, ${name}! Your random score is: ${score}`;
+    
+    // Display the message
+    output.innerHTML = `&lt;strong&gt;${message}&lt;/strong&gt;`;
+    output.style.color = score > 50 ? 'green' : 'red';
+    
+    // Also log to console (press F12 to see!)
+    console.log("Button clicked! Score:", score);
+});</pre>
+        </div>
+
+        <h2>Exercise 1: Variable Practice</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create an HTML file with JavaScript that:</p>
+            <ol>
+                <li>Creates variables for your name, age, and favorite color</li>
+                <li>Uses <code>console.log()</code> to print each variable</li>
+                <li>Creates a message combining all three using template literals</li>
+                <li>Logs the complete message to the console</li>
+            </ol>
+            <p><strong>Hint:</strong> Open the browser console (F12) to see your output!</p>
+        </div>
+
+        <h2>Exercise 2: Create a Simple Calculator</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Write functions to perform calculations:</p>
+            <ol>
+                <li>Create an <code>add(a, b)</code> function</li>
+                <li>Create a <code>subtract(a, b)</code> function</li>
+                <li>Create a <code>multiply(a, b)</code> function</li>
+                <li>Create a <code>divide(a, b)</code> function</li>
+                <li>Test each function with <code>console.log()</code></li>
+            </ol>
+            
+            <p><strong>Example:</strong></p>
+            <div class="code-block">
+<pre>console.log(add(5, 3));       // Should output: 8
+console.log(subtract(10, 4)); // Should output: 6</pre>
+            </div>
+        </div>
+
+        <h2>Exercise 3: Change Page Content</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a page that changes when you click a button:</p>
+            <ol>
+                <li>Create an H1 element with id="title"</li>
+                <li>Create a button</li>
+                <li>When the button is clicked:
+                    <ul>
+                        <li>Change the H1 text to something new</li>
+                        <li>Change the H1 color to blue</li>
+                        <li>Log a message to the console</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <p><strong>Starter code:</strong></p>
+            <div class="code-block">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;DOM Practice&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title"&gt;Original Title&lt;/h1&gt;
+    &lt;button id="change-btn"&gt;Click Me!&lt;/button&gt;
+    
+    &lt;script&gt;
+        // Your code here
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            </div>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>What JavaScript is and how to add it to a page</li>
+            <li>Variables (let, const) and data types</li>
+            <li>String operations and template literals</li>
+            <li>Math operations and the Math object</li>
+            <li>Functions (traditional and arrow functions)</li>
+            <li>DOM manipulation (selecting and changing elements)</li>
+            <li>Console.log() for debugging</li>
+        </ul>
+
+        <div class="tip">
+            <strong>Ready for More?</strong> In Lesson 6, you'll learn about events, user input, and build interactive projects!
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson4.html">Previous Lesson</a>
+        <a href="lesson6.html">Next Lesson</a>
+    </div>
+
+    <!-- External JavaScript file -->
+    <script src="lesson5.js"></script>
+</body>
+</html>

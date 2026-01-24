@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: HTML Elements</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 2: HTML Elements</h1>
+        <p>Master lists, tables, and forms to organize your content</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson1.html">Previous Lesson</a>
+        <a href="lesson3.html">Next Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>How to create ordered and unordered lists</li>
+            <li>How to build tables for data display</li>
+            <li>How to create forms for user input</li>
+            <li>Best practices for organizing content</li>
+        </ul>
+
+        <h2>Lists</h2>
+        
+        <h3>Unordered Lists (Bullet Points)</h3>
+        <p>Use <code>&lt;ul&gt;</code> for bullet point lists. Each item uses <code>&lt;li&gt;</code> (list item):</p>
+        
+        <div class="code-block">
+<pre>&lt;ul&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Bananas&lt;/li&gt;
+    &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ul&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <ul>
+                <li>Apples</li>
+                <li>Bananas</li>
+                <li>Oranges</li>
+            </ul>
+        </div>
+
+        <h3>Ordered Lists (Numbered)</h3>
+        <p>Use <code>&lt;ol&gt;</code> for numbered lists:</p>
+        
+        <div class="code-block">
+<pre>&lt;ol&gt;
+    &lt;li&gt;First step&lt;/li&gt;
+    &lt;li&gt;Second step&lt;/li&gt;
+    &lt;li&gt;Third step&lt;/li&gt;
+&lt;/ol&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <ol>
+                <li>First step</li>
+                <li>Second step</li>
+                <li>Third step</li>
+            </ol>
+        </div>
+
+        <h3>Nested Lists</h3>
+        <p>You can put lists inside lists!</p>
+        
+        <div class="code-block">
+<pre>&lt;ul&gt;
+    &lt;li&gt;Fruits
+        &lt;ul&gt;
+            &lt;li&gt;Apples&lt;/li&gt;
+            &lt;li&gt;Oranges&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Vegetables
+        &lt;ul&gt;
+            &lt;li&gt;Carrots&lt;/li&gt;
+            &lt;li&gt;Broccoli&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <ul>
+                <li>Fruits
+                    <ul>
+                        <li>Apples</li>
+                        <li>Oranges</li>
+                    </ul>
+                </li>
+                <li>Vegetables
+                    <ul>
+                        <li>Carrots</li>
+                        <li>Broccoli</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <h2>Tables</h2>
+        <p>Tables organize data into rows and columns. Structure:</p>
+        <ul>
+            <li><code>&lt;table&gt;</code> - Main table container</li>
+            <li><code>&lt;thead&gt;</code> - Table header section</li>
+            <li><code>&lt;tbody&gt;</code> - Table body section</li>
+            <li><code>&lt;tr&gt;</code> - Table row</li>
+            <li><code>&lt;th&gt;</code> - Table header cell</li>
+            <li><code>&lt;td&gt;</code> - Table data cell</li>
+        </ul>
+        
+        <div class="code-block">
+<pre>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+            &lt;th&gt;City&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;John&lt;/td&gt;
+            &lt;td&gt;25&lt;/td&gt;
+            &lt;td&gt;New York&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Sarah&lt;/td&gt;
+            &lt;td&gt;30&lt;/td&gt;
+            &lt;td&gt;London&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td>25</td>
+                        <td>New York</td>
+                    </tr>
+                    <tr>
+                        <td>Sarah</td>
+                        <td>30</td>
+                        <td>London</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Forms</h2>
+        <p>Forms collect user input. Here are the most common form elements:</p>
+
+        <h3>Text Input</h3>
+        <div class="code-block">
+<pre>&lt;form&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+&lt;/form&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </form>
+        </div>
+
+        <h3>Different Input Types</h3>
+        <div class="example">
+            <strong>Example - Various Input Types:</strong>
+            <div class="result-box">
+                <form>
+                    <p>
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" placeholder="you@example.com">
+                    </p>
+                    
+                    <p>
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" name="password">
+                    </p>
+                    
+                    <p>
+                        <label for="age">Age:</label><br>
+                        <input type="number" id="age" name="age" min="0" max="120">
+                    </p>
+                    
+                    <p>
+                        <label for="date">Date:</label><br>
+                        <input type="date" id="date" name="date">
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <h3>Checkboxes and Radio Buttons</h3>
+        <div class="code-block">
+<pre>&lt;!-- Checkboxes (can select multiple) --&gt;
+&lt;p&gt;Select your interests:&lt;/p&gt;
+&lt;input type="checkbox" id="music" name="music"&gt;
+&lt;label for="music"&gt;Music&lt;/label&gt;&lt;br&gt;
+
+&lt;input type="checkbox" id="sports" name="sports"&gt;
+&lt;label for="sports"&gt;Sports&lt;/label&gt;&lt;br&gt;
+
+&lt;!-- Radio buttons (select only one) --&gt;
+&lt;p&gt;Select your gender:&lt;/p&gt;
+&lt;input type="radio" id="male" name="gender" value="male"&gt;
+&lt;label for="male"&gt;Male&lt;/label&gt;&lt;br&gt;
+
+&lt;input type="radio" id="female" name="gender" value="female"&gt;
+&lt;label for="female"&gt;Female&lt;/label&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <p>Select your interests:</p>
+            <input type="checkbox" id="music" name="music">
+            <label for="music">Music</label><br>
+            
+            <input type="checkbox" id="sports" name="sports">
+            <label for="sports">Sports</label><br>
+            
+            <p>Select your gender:</p>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+
+        <h3>Dropdown Menu</h3>
+        <div class="code-block">
+<pre>&lt;label for="country"&gt;Country:&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+    &lt;option value=""&gt;Choose a country&lt;/option&gt;
+    &lt;option value="usa"&gt;United States&lt;/option&gt;
+    &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+    &lt;option value="canada"&gt;Canada&lt;/option&gt;
+&lt;/select&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="">Choose a country</option>
+                <option value="usa">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="canada">Canada</option>
+            </select>
+        </div>
+
+        <h3>Text Area</h3>
+        <div class="code-block">
+<pre>&lt;label for="message"&gt;Message:&lt;/label&gt;
+&lt;textarea id="message" name="message" rows="4" cols="50"&gt;&lt;/textarea&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50"></textarea>
+        </div>
+
+        <h3>Submit Button</h3>
+        <div class="code-block">
+<pre>&lt;button type="submit"&gt;Submit&lt;/button&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <button type="submit">Submit</button>
+        </div>
+
+        <div class="tip">
+            <strong>Important:</strong> The <code>for</code> attribute in <code>&lt;label&gt;</code> should match the <code>id</code> of the input element. This makes your form more accessible and allows users to click the label to focus the input.
+        </div>
+
+        <h2>Exercise 1: Create a Shopping List</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create an HTML page with:</p>
+            <ol>
+                <li>An H1 heading "My Shopping List"</li>
+                <li>Three different unordered lists:
+                    <ul>
+                        <li>Groceries (with at least 4 items)</li>
+                        <li>Electronics (with at least 3 items)</li>
+                        <li>Clothing (with at least 3 items)</li>
+                    </ul>
+                </li>
+                <li>Each category should be an H2 heading</li>
+            </ol>
+        </div>
+
+        <h2>Exercise 2: Create a Class Schedule Table</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a table showing a weekly class schedule with:</p>
+            <ul>
+                <li>Columns: Day, Time, Subject, Room</li>
+                <li>At least 5 rows of class data</li>
+                <li>Proper table headers using <code>&lt;th&gt;</code></li>
+            </ul>
+        </div>
+
+        <h2>Exercise 3: Build a Contact Form</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a contact form with the following fields:</p>
+            <ol>
+                <li>Name (text input)</li>
+                <li>Email (email input)</li>
+                <li>Phone number (text input)</li>
+                <li>Reason for contact (dropdown with 3 options)</li>
+                <li>Message (textarea)</li>
+                <li>Subscribe to newsletter? (checkbox)</li>
+                <li>Submit button</li>
+            </ol>
+            <p>Make sure each input has a proper label!</p>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>Unordered lists (&lt;ul&gt;) and ordered lists (&lt;ol&gt;)</li>
+            <li>Nested lists for hierarchical data</li>
+            <li>Tables with headers and data cells</li>
+            <li>Form elements (text inputs, checkboxes, radio buttons, dropdowns)</li>
+            <li>Labels for accessibility</li>
+            <li>Text areas for longer input</li>
+        </ul>
+
+        <div class="tip">
+            <strong>Ready for More?</strong> Great job! In Lesson 3, you'll learn how to make your HTML pages look beautiful with CSS!
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson1.html">Previous Lesson</a>
+        <a href="lesson3.html">Next Lesson</a>
+    </div>
+</body>
+</html>

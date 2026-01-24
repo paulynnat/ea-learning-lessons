@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: HTML Basics</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 1: HTML Basics</h1>
+        <p>Learn the foundation of web development - HTML structure and common tags</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson2.html">Next Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>What HTML is and why it matters</li>
+            <li>Basic HTML document structure</li>
+            <li>Common HTML tags (headings, paragraphs, links, images)</li>
+            <li>How to create your first web page</li>
+        </ul>
+
+        <h2>What is HTML?</h2>
+        <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It's the standard language used to create web pages. Think of HTML as the skeleton of a website - it provides the structure and content.</p>
+        
+        <div class="tip">
+            <strong>Key Concept:</strong> HTML uses "tags" to define different parts of your content. Tags are written inside angle brackets like <code>&lt;tag&gt;</code>
+        </div>
+
+        <h2>Basic HTML Structure</h2>
+        <p>Every HTML document follows this basic structure:</p>
+        
+        <div class="code-block">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;This is my first paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </div>
+
+        <p><strong>Let's break this down:</strong></p>
+        <ul>
+            <li><code>&lt;!DOCTYPE html&gt;</code> - Tells the browser this is an HTML5 document</li>
+            <li><code>&lt;html&gt;</code> - The root element that wraps all content</li>
+            <li><code>&lt;head&gt;</code> - Contains meta information about the page (not visible on the page)</li>
+            <li><code>&lt;title&gt;</code> - Sets the title shown in the browser tab</li>
+            <li><code>&lt;body&gt;</code> - Contains all visible content on the page</li>
+        </ul>
+
+        <h2>Common HTML Tags</h2>
+
+        <h3>Headings</h3>
+        <p>HTML has 6 levels of headings, from <code>&lt;h1&gt;</code> (most important) to <code>&lt;h6&gt;</code> (least important):</p>
+        
+        <div class="example">
+            <strong>Example:</strong>
+            <div class="result-box">
+                <h1>This is an H1 heading</h1>
+                <h2>This is an H2 heading</h2>
+                <h3>This is an H3 heading</h3>
+                <h4>This is an H4 heading</h4>
+                <h5>This is an H5 heading</h5>
+                <h6>This is an H6 heading</h6>
+            </div>
+        </div>
+
+        <h3>Paragraphs</h3>
+        <p>Use <code>&lt;p&gt;</code> tags for paragraphs of text:</p>
+        
+        <div class="code-block">
+<pre>&lt;p&gt;This is a paragraph. It can contain multiple sentences 
+and will automatically wrap to fit the width of the browser.&lt;/p&gt;</pre>
+        </div>
+
+        <h3>Text Formatting</h3>
+        <div class="example">
+            <strong>Example:</strong>
+            <div class="code-block">
+<pre>&lt;p&gt;This text is &lt;strong&gt;bold&lt;/strong&gt; and this is &lt;em&gt;italic&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;You can also use &lt;mark&gt;highlighted&lt;/mark&gt; text.&lt;/p&gt;</pre>
+            </div>
+            <div class="result-box">
+                <p>This text is <strong>bold</strong> and this is <em>italic</em>.</p>
+                <p>You can also use <mark>highlighted</mark> text.</p>
+            </div>
+        </div>
+
+        <h3>Links</h3>
+        <p>Links use the <code>&lt;a&gt;</code> tag with an <code>href</code> attribute:</p>
+        
+        <div class="code-block">
+<pre>&lt;a href="https://www.google.com"&gt;Visit Google&lt;/a&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <a href="https://www.google.com">Visit Google</a>
+        </div>
+
+        <h3>Images</h3>
+        <p>Images use the <code>&lt;img&gt;</code> tag. Note: this tag is self-closing (no closing tag needed):</p>
+        
+        <div class="code-block">
+<pre>&lt;img src="image.jpg" alt="Description of image" width="300"&gt;</pre>
+        </div>
+
+        <div class="tip">
+            <strong>Important:</strong> Always include the <code>alt</code> attribute for accessibility. It describes the image for screen readers and shows if the image fails to load.
+        </div>
+
+        <h3>Line Breaks and Horizontal Rules</h3>
+        <div class="code-block">
+<pre>&lt;p&gt;First line&lt;br&gt;Second line&lt;/p&gt;
+&lt;hr&gt;</pre>
+        </div>
+        
+        <div class="result-box">
+            <p>First line<br>Second line</p>
+            <hr>
+            <p>Content after horizontal rule</p>
+        </div>
+
+        <h2>Exercise 1: Create Your Profile Page</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Below is a template. Modify it to create your own profile page with:</p>
+            <ol>
+                <li>Your name as an H1 heading</li>
+                <li>A short paragraph about yourself</li>
+                <li>An H2 heading "My Interests"</li>
+                <li>A paragraph describing your hobbies</li>
+                <li>A link to your favorite website</li>
+            </ol>
+            <p><strong>Instructions:</strong> Right-click this page and select "View Page Source" or press Ctrl+U (Cmd+Option+U on Mac) to see the HTML code. Copy the template below, modify it, and save as a new HTML file!</p>
+        </div>
+
+        <div class="code-block">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Profile&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;[Your Name]&lt;/h1&gt;
+    &lt;p&gt;[Write something about yourself here]&lt;/p&gt;
+    
+    &lt;h2&gt;My Interests&lt;/h2&gt;
+    &lt;p&gt;[Describe your hobbies and interests]&lt;/p&gt;
+    
+    &lt;h2&gt;Favorite Website&lt;/h2&gt;
+    &lt;p&gt;Check out my favorite website: 
+       &lt;a href="[URL]"&gt;[Website Name]&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </div>
+
+        <h2>Exercise 2: Format Some Text</h2>
+        <div class="exercise">
+            <p>Create a new HTML file with a paragraph that includes:</p>
+            <ul>
+                <li>At least one <strong>bold</strong> word</li>
+                <li>At least one <em>italic</em> word</li>
+                <li>A line break in the middle</li>
+                <li>Some <mark>highlighted</mark> text</li>
+            </ul>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>HTML document structure (&lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;)</li>
+            <li>Headings (&lt;h1&gt; through &lt;h6&gt;)</li>
+            <li>Paragraphs (&lt;p&gt;)</li>
+            <li>Text formatting (&lt;strong&gt;, &lt;em&gt;, &lt;mark&gt;)</li>
+            <li>Links (&lt;a&gt;)</li>
+            <li>Images (&lt;img&gt;)</li>
+            <li>Line breaks (&lt;br&gt;) and horizontal rules (&lt;hr&gt;)</li>
+        </ul>
+
+        <div class="tip">
+            <strong>Ready for More?</strong> Once you've completed the exercises, move on to Lesson 2 to learn about lists, tables, and forms!
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson2.html">Next Lesson</a>
+    </div>
+</body>
+</html>

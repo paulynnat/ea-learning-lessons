@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4: CSS Layout</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+    <link rel="stylesheet" href="lesson4.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 4: CSS Layout</h1>
+        <p>Master the Box Model and Flexbox for powerful layouts!</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson3.html">Previous Lesson</a>
+        <a href="lesson5.html">Next Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>Understanding the CSS Box Model</li>
+            <li>How padding, border, and margin work together</li>
+            <li>Introduction to Flexbox</li>
+            <li>Creating responsive layouts</li>
+        </ul>
+
+        <h2>The CSS Box Model</h2>
+        <p>Every HTML element is essentially a box. The CSS Box Model describes how the size of these boxes is calculated:</p>
+        
+        <!-- Visual demonstration of box model -->
+        <div class="box-visual">
+            <div class="box-margin-demo">
+                <strong>Margin</strong> (transparent, space outside the border)
+                <div class="box-border-demo">
+                    <strong style="color: #f44336;">Border</strong> (the edge of the box)
+                    <div class="box-padding-demo">
+                        <strong style="color: white;">Padding</strong> (space inside the border)
+                        <div class="box-content-demo">
+                            Content
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Box Model Properties</h3>
+        <div class="code-block">
+<pre>.box {
+    width: 200px;          /* Content width */
+    height: 100px;         /* Content height */
+    padding: 20px;         /* Space inside the border */
+    border: 5px solid navy;/* Border around padding */
+    margin: 20px;          /* Space outside the border */
+}</pre>
+        </div>
+
+        <div class="result-box">
+            <div class="box-model-example">
+                Content Area<br>
+                (200px wide)
+            </div>
+            <p><strong>Total width calculation:</strong><br>
+            200px (content) + 40px (padding left+right) + 10px (border left+right) + 40px (margin left+right) = 290px total space</p>
+        </div>
+
+        <div class="tip">
+            <strong>Pro Tip:</strong> Use <code>box-sizing: border-box;</code> to make width include padding and border:
+            <div class="code-block">
+<pre>* {
+    box-sizing: border-box;
+}
+/* Now width: 200px means the TOTAL width including padding and border! */</pre>
+            </div>
+        </div>
+
+        <h3>Shorthand Properties</h3>
+        <div class="code-block">
+<pre>/* All sides the same */
+margin: 20px;
+padding: 15px;
+
+/* Vertical | Horizontal */
+margin: 20px 40px;
+padding: 10px 20px;
+
+/* Top | Right | Bottom | Left (clockwise) */
+margin: 10px 20px 10px 20px;
+
+/* Individual sides */
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 10px;
+margin-left: 20px;</pre>
+        </div>
+
+        <h2>Introduction to Flexbox</h2>
+        <p>Flexbox is a powerful layout tool that makes it easy to align and distribute items in a container.</p>
+
+        <h3>Basic Flexbox Setup</h3>
+        <div class="code-block">
+<pre>.container {
+    display: flex;  /* This makes it a flex container */
+}
+
+.item {
+    /* These are flex items (children of flex container) */
+}</pre>
+        </div>
+
+        <h3>Flex Direction</h3>
+        <p>Controls whether items flow in rows or columns:</p>
+        
+        <div class="example">
+            <strong>Row (default):</strong>
+            <div class="code-block">
+<pre>.container {
+    display: flex;
+    flex-direction: row;
+}</pre>
+            </div>
+            <div class="result-box">
+                <div class="flex-container flex-row">
+                    <div class="flex-item">Item 1</div>
+                    <div class="flex-item">Item 2</div>
+                    <div class="flex-item">Item 3</div>
+                </div>
+            </div>
+
+            <strong>Column:</strong>
+            <div class="code-block">
+<pre>.container {
+    display: flex;
+    flex-direction: column;
+}</pre>
+            </div>
+            <div class="result-box">
+                <div class="flex-container flex-column">
+                    <div class="flex-item">Item 1</div>
+                    <div class="flex-item">Item 2</div>
+                    <div class="flex-item">Item 3</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Justify Content (Horizontal Alignment)</h3>
+        <p>Controls how items are positioned along the main axis:</p>
+        
+        <div class="example">
+            <strong>Center:</strong>
+            <div class="code-block">
+<pre>justify-content: center;</pre>
+            </div>
+            <div class="result-box">
+                <div class="flex-container flex-center-horizontal">
+                    <div class="flex-item flex-item-small">Item 1</div>
+                    <div class="flex-item flex-item-small">Item 2</div>
+                </div>
+            </div>
+
+            <strong>Space Between:</strong>
+            <div class="code-block">
+<pre>justify-content: space-between;</pre>
+            </div>
+            <div class="result-box">
+                <div class="flex-container flex-space-between">
+                    <div class="flex-item flex-item-small">Item 1</div>
+                    <div class="flex-item flex-item-small">Item 2</div>
+                    <div class="flex-item flex-item-small">Item 3</div>
+                </div>
+            </div>
+
+            <strong>Space Around:</strong>
+            <div class="code-block">
+<pre>justify-content: space-around;</pre>
+            </div>
+            <div class="result-box">
+                <div class="flex-container flex-space-around">
+                    <div class="flex-item flex-item-small">Item 1</div>
+                    <div class="flex-item flex-item-small">Item 2</div>
+                    <div class="flex-item flex-item-small">Item 3</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Align Items (Vertical Alignment)</h3>
+        <p>Controls how items are positioned along the cross axis:</p>
+        
+        <div class="example">
+            <strong>Center (both horizontal and vertical):</strong>
+            <div class="code-block">
+<pre>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}</pre>
+            </div>
+            <div class="result-box">
+                <div class="flex-container flex-center-both">
+                    <div class="flex-item flex-item-small">Perfectly Centered!</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Flex Wrap</h3>
+        <p>Controls whether items wrap to a new line:</p>
+        
+        <div class="code-block">
+<pre>.container {
+    display: flex;
+    flex-wrap: wrap;  /* Items will wrap to next line if needed */
+}</pre>
+        </div>
+        
+        <div class="result-box">
+            <div class="flex-container flex-wrap">
+                <div class="flex-item flex-item-fixed">Item 1</div>
+                <div class="flex-item flex-item-fixed">Item 2</div>
+                <div class="flex-item flex-item-fixed">Item 3</div>
+                <div class="flex-item flex-item-fixed">Item 4</div>
+                <div class="flex-item flex-item-fixed">Item 5</div>
+            </div>
+        </div>
+
+        <h3>Flex Property (for Items)</h3>
+        <p>Controls how flex items grow or shrink:</p>
+        
+        <div class="code-block">
+<pre>.item-1 {
+    flex: 1;  /* Takes 1 part of available space */
+}
+.item-2 {
+    flex: 2;  /* Takes 2 parts (twice as much as item-1) */
+}</pre>
+        </div>
+        
+        <div class="result-box">
+            <div class="flex-container">
+                <div class="flex-item flex-1">flex: 1</div>
+                <div class="flex-item flex-2">flex: 2</div>
+                <div class="flex-item flex-1">flex: 1</div>
+            </div>
+        </div>
+
+        <h2>Exercise 1: Create a Navigation Bar</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a horizontal navigation bar using Flexbox:</p>
+            <ol>
+                <li>Create a container with class "navbar"</li>
+                <li>Use <code>display: flex</code></li>
+                <li>Add 4 navigation items (Home, About, Services, Contact)</li>
+                <li>Use <code>justify-content: space-around</code></li>
+                <li>Style with:
+                    <ul>
+                        <li>Background color: #333</li>
+                        <li>Padding: 15px</li>
+                        <li>Text color: white</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h2>Exercise 2: Create a Card Layout</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a responsive card layout:</p>
+            <ol>
+                <li>Create a flex container with 3 cards</li>
+                <li>Each card should have:
+                    <ul>
+                        <li>Width: 250px</li>
+                        <li>Padding: 20px</li>
+                        <li>Margin: 10px</li>
+                        <li>Border: 1px solid gray</li>
+                        <li>Border-radius: 8px</li>
+                    </ul>
+                </li>
+                <li>Use <code>flex-wrap: wrap</code> so cards wrap on small screens</li>
+                <li>Use <code>justify-content: center</code></li>
+            </ol>
+        </div>
+
+        <h2>Exercise 3: Center a Box</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a container that centers content both horizontally and vertically:</p>
+            <ul>
+                <li>Container height: 300px</li>
+                <li>Use Flexbox to center a box inside</li>
+                <li>The centered box should have:
+                    <ul>
+                        <li>Width: 200px</li>
+                        <li>Height: 100px</li>
+                        <li>Background color of your choice</li>
+                        <li>Some text inside</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <p><strong>Hint:</strong> Use <code>display: flex</code>, <code>justify-content: center</code>, and <code>align-items: center</code></p>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>The CSS Box Model (content, padding, border, margin)</li>
+            <li>How to calculate total element size</li>
+            <li>Box-sizing: border-box for easier sizing</li>
+            <li>Flexbox basics (display: flex)</li>
+            <li>Flex-direction (row vs column)</li>
+            <li>Justify-content (horizontal alignment)</li>
+            <li>Align-items (vertical alignment)</li>
+            <li>Flex-wrap for responsive designs</li>
+            <li>Flex property for flexible sizing</li>
+        </ul>
+
+        <div class="tip">
+            <strong>Ready for JavaScript?</strong> You've mastered HTML and CSS! In Lesson 5, you'll learn JavaScript to make your pages interactive!
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson3.html">Previous Lesson</a>
+        <a href="lesson5.html">Next Lesson</a>
+    </div>
+</body>
+</html>

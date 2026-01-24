@@ -1,0 +1,114 @@
+/* CSS for Lesson 4 - Box Model and Flexbox Demonstrations */
+
+/* Box model visual demonstration */
+.box-visual {
+    background: white;
+    padding: 40px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.box-content-demo {
+    background: #ffeb3b;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.box-padding-demo {
+    background: #4caf50;
+    padding: 20px;
+}
+
+.box-border-demo {
+    border: 5px solid #f44336;
+}
+
+.box-margin-demo {
+    margin: 20px;
+    background: #2196f3;
+    padding: 5px;
+}
+
+/* Box model example */
+.box-model-example {
+    background-color: lightblue;
+    padding: 20px;
+    border: 5px solid navy;
+    margin: 20px;
+    width: 200px;
+}
+
+/* Flexbox container base styles */
+.flex-container {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px dashed #666;
+}
+
+/* Flex items base styles */
+.flex-item {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+    flex: 1;
+}
+
+/* Flex direction examples */
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+/* Justify content examples */
+.flex-center-horizontal {
+    justify-content: center;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-space-around {
+    justify-content: space-around;
+}
+
+/* Align items examples */
+.flex-center-both {
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+/* Flex wrap example */
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+/* Small flex items that don't expand */
+.flex-item-small {
+    flex: none;
+}
+
+/* Fixed width flex items */
+.flex-item-fixed {
+    flex: none;
+    width: 150px;
+}
+
+/* Flex property examples */
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+    background-color: #2196F3;
+}

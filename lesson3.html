@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: CSS Basics</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+    <link rel="stylesheet" href="lesson3.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 3: CSS Basics</h1>
+        <p>Learn to style your HTML pages and make them beautiful!</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson2.html">Previous Lesson</a>
+        <a href="lesson4.html">Next Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>What CSS is and why it's important</li>
+            <li>Three ways to add CSS to your page</li>
+            <li>CSS selectors (element, class, ID)</li>
+            <li>Common CSS properties for colors, fonts, and spacing</li>
+        </ul>
+
+        <h2>What is CSS?</h2>
+        <p><strong>CSS</strong> stands for <strong>Cascading Style Sheets</strong>. While HTML provides the structure and content, CSS controls the visual appearance and layout. Think of HTML as the bones and CSS as the skin and clothing!</p>
+        
+        <div class="tip">
+            <strong>Key Concept:</strong> CSS works by selecting HTML elements and applying style rules to them. A CSS rule consists of a <strong>selector</strong> and a <strong>declaration block</strong>.
+        </div>
+
+        <h2>Three Ways to Add CSS</h2>
+
+        <h3>1. Inline CSS (Not Recommended)</h3>
+        <p>Applied directly to HTML elements using the <code>style</code> attribute:</p>
+        <div class="code-block">
+<pre>&lt;p style="color: blue; font-size: 18px;"&gt;This is blue text.&lt;/p&gt;</pre>
+        </div>
+        <div class="result-box">
+            <p style="color: blue; font-size: 18px;">This is blue text.</p>
+        </div>
+
+        <h3>2. Internal CSS (Good for Single Pages)</h3>
+        <p>Written in the <code>&lt;head&gt;</code> section using <code>&lt;style&gt;</code> tags:</p>
+        <div class="code-block">
+<pre>&lt;head&gt;
+    &lt;style&gt;
+        p {
+            color: green;
+            font-size: 16px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</pre>
+        </div>
+
+        <h3>3. External CSS (Best Practice!)</h3>
+        <p>Written in a separate .css file and linked to your HTML:</p>
+        <div class="code-block">
+<pre>&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</pre>
+        </div>
+        <p><strong>In styles.css:</strong></p>
+        <div class="code-block">
+<pre>p {
+    color: green;
+    font-size: 16px;
+}</pre>
+        </div>
+
+        <h2>CSS Selectors</h2>
+
+        <h3>Element Selector</h3>
+        <p>Selects all elements of a specific type:</p>
+        <div class="code-block">
+<pre>p {
+    color: blue;
+    font-size: 20px;
+}</pre>
+        </div>
+        <div class="result-box">
+            <p class="demo-text">All paragraphs will be blue and 20px!</p>
+        </div>
+
+        <h3>Class Selector</h3>
+        <p>Selects elements with a specific class. Classes start with a dot (.) and can be reused:</p>
+        <div class="code-block">
+<pre>&lt;!-- HTML --&gt;
+&lt;p class="highlight"&gt;This paragraph is highlighted.&lt;/p&gt;
+&lt;p class="highlight"&gt;This one too!&lt;/p&gt;
+
+&lt;!-- CSS --&gt;
+.highlight {
+    background-color: yellow;
+    padding: 5px;
+}</pre>
+        </div>
+        <div class="result-box">
+            <p class="highlight">This paragraph is highlighted.</p>
+            <p class="highlight">This one too!</p>
+        </div>
+
+        <h3>ID Selector</h3>
+        <p>Selects a specific element with a unique ID. IDs start with a hash (#) and should be unique on the page:</p>
+        <div class="code-block">
+<pre>&lt;!-- HTML --&gt;
+&lt;p id="special-para"&gt;This is special!&lt;/p&gt;
+
+&lt;!-- CSS --&gt;
+#special-para {
+    color: red;
+    font-weight: bold;
+}</pre>
+        </div>
+        <div class="result-box">
+            <p id="special-para">This is special!</p>
+        </div>
+
+        <div class="tip">
+            <strong>When to Use What:</strong>
+            <ul>
+                <li><strong>Classes:</strong> For styling multiple elements the same way</li>
+                <li><strong>IDs:</strong> For styling one unique element (also used for JavaScript)</li>
+                <li><strong>Elements:</strong> For general styling of all elements of that type</li>
+            </ul>
+        </div>
+
+        <h2>Common CSS Properties</h2>
+
+        <h3>Colors</h3>
+        <div class="code-block">
+<pre>/* Color names */
+color: red;
+background-color: lightblue;
+
+/* Hex codes */
+color: #FF5733;
+background-color: #3498db;
+
+/* RGB values */
+color: rgb(255, 87, 51);
+background-color: rgba(52, 152, 219, 0.5); /* Last value is opacity */</pre>
+        </div>
+
+        <h3>Text Styling</h3>
+        <div class="example">
+            <strong>Common text properties:</strong>
+            <div class="code-block">
+<pre>p {
+    color: navy;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    line-height: 1.5;
+}</pre>
+            </div>
+        </div>
+
+        <h3>Spacing</h3>
+        <p>Two important properties for spacing:</p>
+        <ul>
+            <li><strong>Padding:</strong> Space inside the element (between content and border)</li>
+            <li><strong>Margin:</strong> Space outside the element (between elements)</li>
+        </ul>
+        
+        <div class="code-block">
+<pre>.demo-box {
+    padding: 20px;        /* All sides */
+    margin: 10px;         /* All sides */
+    
+    /* Or specify each side */
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    
+    /* Shorthand: top right bottom left (clockwise) */
+    padding: 10px 15px 10px 15px;
+}</pre>
+        </div>
+
+        <div class="result-box">
+            <div class="demo-box">
+                This box has padding (inside) and margin (outside)!
+            </div>
+        </div>
+
+        <h3>Borders</h3>
+        <div class="code-block">
+<pre>div {
+    border: 3px solid navy;
+    border-radius: 10px;    /* Rounded corners */
+    
+    /* Or specify each property */
+    border-width: 3px;
+    border-style: solid;    /* solid, dashed, dotted */
+    border-color: navy;
+}</pre>
+        </div>
+
+        <h3>Width and Height</h3>
+        <div class="code-block">
+<pre>div {
+    width: 300px;          /* Fixed width */
+    height: 200px;         /* Fixed height */
+    max-width: 100%;       /* Responsive: won't exceed container */
+}</pre>
+        </div>
+
+        <h2>Exercise 1: Style a Simple Page</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create an HTML file with internal CSS that includes:</p>
+            <ol>
+                <li>An H1 heading styled with:
+                    <ul>
+                        <li>Color of your choice</li>
+                        <li>Font size of 36px</li>
+                        <li>Center alignment</li>
+                    </ul>
+                </li>
+                <li>Paragraphs styled with:
+                    <ul>
+                        <li>Font family: Arial</li>
+                        <li>Line height: 1.6</li>
+                        <li>Color: dark gray (#333)</li>
+                    </ul>
+                </li>
+                <li>A class called "important" that makes text:
+                    <ul>
+                        <li>Bold</li>
+                        <li>Yellow background</li>
+                        <li>Red text color</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h2>Exercise 2: Create a Styled Card</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a "card" design using HTML and CSS:</p>
+            <ol>
+                <li>Create a div with class "card"</li>
+                <li>Style it with:
+                    <ul>
+                        <li>Width: 300px</li>
+                        <li>Padding: 20px</li>
+                        <li>Border: 1px solid gray</li>
+                        <li>Border radius: 10px</li>
+                        <li>Background color: light blue</li>
+                        <li>Box shadow: 0 4px 8px rgba(0,0,0,0.1)</li>
+                    </ul>
+                </li>
+                <li>Inside the card, add a heading and paragraph with appropriate styling</li>
+            </ol>
+            
+            <p><strong>Starter Template:</strong></p>
+            <div class="code-block">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;style&gt;
+        .card {
+            /* Add your CSS here */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="card"&gt;
+        &lt;h2&gt;Card Title&lt;/h2&gt;
+        &lt;p&gt;Card content goes here.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            </div>
+        </div>
+
+        <h2>Exercise 3: Style a Button</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a styled button that looks professional:</p>
+            <ul>
+                <li>Background color: #4CAF50</li>
+                <li>Text color: white</li>
+                <li>Padding: 15px 30px</li>
+                <li>Border: none</li>
+                <li>Border radius: 5px</li>
+                <li>Font size: 16px</li>
+                <li>Cursor: pointer (use <code>cursor: pointer;</code>)</li>
+            </ul>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>What CSS is and why it's important</li>
+            <li>Three ways to add CSS (inline, internal, external)</li>
+            <li>Element, class, and ID selectors</li>
+            <li>Color properties (color, background-color)</li>
+            <li>Text styling (font-size, font-family, text-align)</li>
+            <li>Spacing (padding, margin)</li>
+            <li>Borders and border-radius</li>
+            <li>Width and height properties</li>
+        </ul>
+
+        <div class="tip">
+            <strong>Ready for More?</strong> In Lesson 4, you'll learn about the CSS Box Model and how to create layouts with Flexbox!
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson2.html">Previous Lesson</a>
+        <a href="lesson4.html">Next Lesson</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/* CSS demonstration styles for Lesson 3 */
+
+/* Demo text example */
+.demo-text {
+    color: blue;
+    font-size: 20px;
+}
+
+/* Demo box example showing padding, margin, border */
+.demo-box {
+    background-color: lightblue;
+    padding: 20px;
+    border: 3px solid navy;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+/* Special paragraph with ID selector example */
+#special-para {
+    color: red;
+    font-weight: bold;
+}
+
+/* Highlight class example */
+.highlight {
+    background-color: yellow;
+    padding: 5px;
+}

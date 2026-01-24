@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: JavaScript Interactivity</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+    <link rel="stylesheet" href="lesson6.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 6: JavaScript Interactivity</h1>
+        <p>Master events and user interactions to build real applications!</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson5.html">Previous Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>How to handle user events (clicks, key presses, etc.)</li>
+            <li>Working with form inputs</li>
+            <li>Conditional statements (if/else)</li>
+            <li>Building interactive projects</li>
+        </ul>
+
+        <h2>Event Listeners</h2>
+        <p>Events are things that happen in the browser (clicks, key presses, mouse movements, etc.). We can "listen" for these events and respond to them.</p>
+
+        <h3>Method 1: Inline Event Handlers</h3>
+        <div class="code-block">
+<pre>&lt;button onclick="handleClick()"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+    function handleClick() {
+        alert("Button clicked!");
+    }
+&lt;/script&gt;</pre>
+        </div>
+
+        <h3>Method 2: addEventListener (Better!)</h3>
+        <div class="code-block">
+<pre>&lt;button id="myButton"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+    let button = document.getElementById("myButton");
+    
+    button.addEventListener("click", function() {
+        alert("Button clicked!");
+    });
+    
+    // Or with a named function
+    function handleClick() {
+        alert("Button clicked!");
+    }
+    button.addEventListener("click", handleClick);
+&lt;/script&gt;</pre>
+        </div>
+
+        <h3>Common Events</h3>
+        <div class="code-block">
+<pre>// Click events
+element.addEventListener("click", function() { });
+
+// Mouse events
+element.addEventListener("mouseenter", function() { });  // Mouse enters
+element.addEventListener("mouseleave", function() { });  // Mouse leaves
+
+// Keyboard events
+element.addEventListener("keydown", function() { });     // Key pressed
+element.addEventListener("keyup", function() { });       // Key released
+
+// Form events
+element.addEventListener("submit", function(e) { 
+    e.preventDefault();  // Prevent form from submitting
+});
+element.addEventListener("input", function() { });       // Input changes
+
+// Window events
+window.addEventListener("load", function() { });         // Page loaded
+window.addEventListener("resize", function() { });       // Window resized</pre>
+        </div>
+
+        <h2>Working with Form Inputs</h2>
+        
+        <h3>Getting Input Values</h3>
+        <div class="code-block">
+<pre>// HTML
+&lt;input type="text" id="nameInput" placeholder="Enter your name"&gt;
+&lt;button id="submitBtn"&gt;Submit&lt;/button&gt;
+
+// JavaScript
+let input = document.getElementById("nameInput");
+let button = document.getElementById("submitBtn");
+
+button.addEventListener("click", function() {
+    let name = input.value;  // Get the input value
+    console.log("You entered:", name);
+    
+    input.value = "";  // Clear the input
+});</pre>
+        </div>
+
+        <h3>Interactive Demo: Form Input</h3>
+        <div class="result-box">
+            <input type="text" id="demo-input" placeholder="Type your name" class="demo-input">
+            <button class="demo-button" id="greet-btn">Greet Me!</button>
+            <div id="greeting-output"></div>
+        </div>
+
+        <h2>Conditional Statements</h2>
+        <p>Conditionals allow your code to make decisions:</p>
+
+        <h3>If Statements</h3>
+        <div class="code-block">
+<pre>let age = 18;
+
+if (age >= 18) {
+    console.log("You are an adult");
+}
+
+// If-else
+if (age >= 18) {
+    console.log("You are an adult");
+} else {
+    console.log("You are a minor");
+}
+
+// If-else if-else
+let score = 85;
+
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 80) {
+    console.log("Grade: B");
+} else if (score >= 70) {
+    console.log("Grade: C");
+} else {
+    console.log("Grade: F");
+}</pre>
+        </div>
+
+        <h3>Comparison Operators</h3>
+        <div class="code-block">
+<pre>// Equality
+==   // Equal to (type coercion: "5" == 5 is true)
+===  // Strict equal (no type coercion: "5" === 5 is false)
+!=   // Not equal
+!==  // Strict not equal
+
+// Comparison
+&gt;    // Greater than
+&lt;    // Less than
+&gt;=   // Greater than or equal
+&lt;=   // Less than or equal
+
+// Logical operators
+&&   // AND (both conditions must be true)
+||   // OR (at least one condition must be true)
+!    // NOT (reverses the boolean)
+
+// Examples
+if (age >= 18 && hasLicense) {
+    console.log("You can drive!");
+}
+
+if (day === "Saturday" || day === "Sunday") {
+    console.log("It's the weekend!");
+}</pre>
+        </div>
+
+        <h2>Project 1: Counter App</h2>
+        <div class="result-box">
+            <h3>Counter Demo</h3>
+            <div id="counter-display">0</div>
+            <button class="demo-button" id="increment-btn">Increment (+)</button>
+            <button class="demo-button" id="decrement-btn">Decrement (-)</button>
+            <button class="demo-button" id="reset-btn">Reset</button>
+        </div>
+
+        <p><strong>The code behind the counter:</strong></p>
+        <div class="code-block">
+<pre>// Counter variable
+let count = 0;
+
+// Get elements
+let display = document.getElementById("counter-display");
+let incrementBtn = document.getElementById("increment-btn");
+let decrementBtn = document.getElementById("decrement-btn");
+let resetBtn = document.getElementById("reset-btn");
+
+// Increment function
+incrementBtn.addEventListener("click", function() {
+    count++;
+    display.textContent = count;
+});
+
+// Decrement function
+decrementBtn.addEventListener("click", function() {
+    count--;
+    display.textContent = count;
+});
+
+// Reset function
+resetBtn.addEventListener("click", function() {
+    count = 0;
+    display.textContent = count;
+});</pre>
+        </div>
+
+        <h2>Project 2: Todo List</h2>
+        <div class="result-box">
+            <h3>Todo List Demo</h3>
+            <div class="todo-container">
+                <input type="text" id="todo-input" placeholder="Enter a task..." class="todo-input">
+                <button id="add-todo" class="demo-button">Add Task</button>
+            </div>
+            <ul id="todo-list"></ul>
+        </div>
+
+        <p><strong>The code behind the todo list:</strong></p>
+        <div class="code-block">
+<pre>// Get elements
+let todoInput = document.getElementById("todo-input");
+let addBtn = document.getElementById("add-todo");
+let todoList = document.getElementById("todo-list");
+
+// Add todo function
+function addTodo() {
+    let todoText = todoInput.value;
+    
+    // Check if input is empty
+    if (todoText === "") {
+        alert("Please enter a task!");
+        return;
+    }
+    
+    // Create list item
+    let li = document.createElement("li");
+    li.textContent = todoText;
+    
+    // Create delete button
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.className = "delete-btn";
+    deleteBtn.addEventListener("click", function() {
+        li.remove();
+    });
+    
+    // Add delete button to list item
+    li.appendChild(deleteBtn);
+    
+    // Add list item to list
+    todoList.appendChild(li);
+    
+    // Clear input
+    todoInput.value = "";
+}
+
+// Add click event to button
+addBtn.addEventListener("click", addTodo);
+
+// Allow Enter key to add task
+todoInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        addTodo();
+    }
+});</pre>
+        </div>
+
+        <h2>Exercise 1: Color Changer</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a page that changes the background color when you click a button:</p>
+            <ol>
+                <li>Create three buttons: "Red", "Blue", "Green"</li>
+                <li>When each button is clicked, change the background color of the page to that color</li>
+                <li>Add a "Reset" button that changes the background to white</li>
+            </ol>
+            
+            <p><strong>Hint:</strong> Use <code>document.body.style.backgroundColor</code></p>
+        </div>
+
+        <h2>Exercise 2: Simple Calculator</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Build a simple calculator:</p>
+            <ol>
+                <li>Create two number inputs</li>
+                <li>Create buttons for +, -, ×, ÷</li>
+                <li>Display the result when a button is clicked</li>
+                <li>Handle division by zero with an error message</li>
+            </ol>
+            
+            <p><strong>Starter template:</strong></p>
+            <div class="code-block">
+<pre>&lt;input type="number" id="num1" placeholder="First number"&gt;
+&lt;input type="number" id="num2" placeholder="Second number"&gt;
+&lt;button id="add-btn"&gt;+&lt;/button&gt;
+&lt;button id="subtract-btn"&gt;-&lt;/button&gt;
+&lt;button id="multiply-btn"&gt;×&lt;/button&gt;
+&lt;button id="divide-btn"&gt;÷&lt;/button&gt;
+&lt;div id="result"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    // Your code here
+&lt;/script&gt;</pre>
+            </div>
+        </div>
+
+        <h2>Exercise 3: Password Validator</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Create a password strength checker:</p>
+            <ol>
+                <li>Create a password input field</li>
+                <li>As the user types, check if the password:
+                    <ul>
+                        <li>Is at least 8 characters long</li>
+                        <li>Contains at least one number</li>
+                        <li>Contains at least one uppercase letter</li>
+                    </ul>
+                </li>
+                <li>Display "Weak", "Medium", or "Strong" based on how many criteria are met</li>
+                <li>Change the message color (red for weak, orange for medium, green for strong)</li>
+            </ol>
+        </div>
+
+        <h2>Final Project: Build a Quiz App</h2>
+        <div class="exercise">
+            <h3>Challenge Project:</h3>
+            <p>Combine everything you've learned to build a quiz application:</p>
+            <ol>
+                <li>Create at least 5 multiple-choice questions</li>
+                <li>Display one question at a time</li>
+                <li>Have "Next" and "Previous" buttons</li>
+                <li>When the user finishes, show their score</li>
+                <li>Add a "Restart Quiz" button</li>
+            </ol>
+            
+            <p><strong>Bonus features:</strong></p>
+            <ul>
+                <li>Highlight correct/incorrect answers</li>
+                <li>Add a timer</li>
+                <li>Save high scores using localStorage</li>
+            </ul>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>Event listeners and handling user interactions</li>
+            <li>Working with form inputs and getting values</li>
+            <li>Conditional statements (if/else)</li>
+            <li>Comparison and logical operators</li>
+            <li>Creating and removing DOM elements</li>
+            <li>Building interactive applications</li>
+        </ul>
+
+        <h2>What's Next?</h2>
+        <div class="tip">
+            <h3>Congratulations!</h3>
+            <p>You've completed the beginner web development course! You now have a solid foundation in HTML, CSS, and JavaScript.</p>
+            
+            <p><strong>Continue your learning journey:</strong></p>
+            <ul>
+                <li>Practice by building your own projects</li>
+                <li>Learn about APIs and fetching data</li>
+                <li>Explore frameworks like React or Vue</li>
+                <li>Learn backend development (Node.js, Python, etc.)</li>
+                <li>Build a portfolio website to showcase your work</li>
+            </ul>
+            
+            <p><strong>Resources:</strong></p>
+            <ul>
+                <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a> - Comprehensive web development documentation</li>
+                <li><a href="https://www.freecodecamp.org" target="_blank">freeCodeCamp</a> - Free coding courses</li>
+                <li><a href="https://javascript.info" target="_blank">JavaScript.info</a> - Modern JavaScript tutorial</li>
+            </ul>
+            
+            <p><strong>Remember:</strong> The best way to learn is by doing. Build projects, make mistakes, and keep coding!</p>
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson5.html">Previous Lesson</a>
+    </div>
+
+    <!-- External JavaScript file -->
+    <script src="lesson6.js"></script>
+</body>
+</html>

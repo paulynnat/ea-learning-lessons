@@ -1,0 +1,11 @@
+/* CSS for Lesson 5 - JavaScript Demonstrations */
+
+/* Demo output area */
+#demo-output {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    min-height: 30px;
+    font-size: 18px;
+}
