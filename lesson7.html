@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7: Local Server & Git Basics</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 7: Local Server & Git Basics</h1>
+        <p>Run your project locally and learn version control with Git</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson6.html">Previous Lesson</a>
+        <a href="lesson8.html">Next Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>How to run your web project on a local server</li>
+            <li>Why use a local server instead of opening files directly</li>
+            <li>What Git is and why version control matters</li>
+            <li>Installing and configuring Git</li>
+            <li>Basic Git commands: init, add, commit, status</li>
+            <li>Using .gitignore</li>
+        </ul>
+
+        <h2>Why Run a Local Server?</h2>
+        <p>So far you've been opening HTML files directly in the browser (e.g., <code>file:///Users/you/project/index.html</code>). That works, but:</p>
+        <ul>
+            <li>Some features (like fetching data or certain JavaScript APIs) require a proper <strong>HTTP</strong> URL</li>
+            <li>Relative paths and links behave more like they will on a real website</li>
+            <li>You can test your site the way visitors will see it</li>
+        </ul>
+
+        <h2>Ways to Run a Local Server</h2>
+
+        <h3>Option 1: VS Code Live Server (Easiest)</h3>
+        <p>If you use <strong>Visual Studio Code</strong> (or Cursor):</p>
+        <ol>
+            <li>Install the <strong>Live Server</strong> extension (by Ritwick Dey)</li>
+            <li>Right-click your <code>index.html</code> (or any HTML file)</li>
+            <li>Select <strong>"Open with Live Server"</strong></li>
+            <li>Your browser opens at something like <code>http://127.0.0.1:5500</code> and auto-refreshes when you save files</li>
+        </ol>
+        <div class="tip">
+            <strong>Tip:</strong> You can also click "Go Live" in the bottom status bar of VS Code/Cursor to start the server.
+        </div>
+
+        <h3>Option 2: Python (Built-in on Mac/Linux)</h3>
+        <p>If you have Python installed, open a terminal in your project folder and run:</p>
+        <div class="code-block">
+<pre># Python 3
+python3 -m http.server 8000</pre>
+        </div>
+        <p>Then open <code>http://localhost:8000</code> in your browser. Use <strong>Ctrl+C</strong> in the terminal to stop the server.</p>
+
+        <h3>Option 3: Node.js (npx serve)</h3>
+        <p>If you have <strong>Node.js</strong> installed:</p>
+        <div class="code-block">
+<pre>npx serve</pre>
+        </div>
+        <p>Follow the URL shown in the terminal (e.g., <code>http://localhost:3000</code>).</p>
+
+        <div class="tip">
+            <strong>Summary:</strong> Pick one method that works on your computer. For beginners, Live Server in VS Code/Cursor is usually the simplest.
+        </div>
+
+        <h2>What is Git?</h2>
+        <p><strong>Git</strong> is a <strong>version control</strong> system. It helps you:</p>
+        <ul>
+            <li>Save snapshots of your project (called <strong>commits</strong>) so you can go back if something breaks</li>
+            <li>See what changed between versions</li>
+            <li>Collaborate with others without overwriting each other's work</li>
+            <li>Back up and share your code (e.g., on GitHub)</li>
+        </ul>
+        <p>Think of it like "Save" in a game—but you keep every save and can jump back to any of them.</p>
+
+        <h2>Install Git</h2>
+        <ul>
+            <li><strong>Mac:</strong> Install Xcode Command Line Tools: run <code>xcode-select --install</code> in Terminal, or install from <a href="https://git-scm.com/download/mac" target="_blank">git-scm.com</a></li>
+            <li><strong>Windows:</strong> Download and run the installer from <a href="https://git-scm.com/download/win" target="_blank">git-scm.com</a></li>
+            <li><strong>Linux:</strong> <code>sudo apt install git</code> (Ubuntu/Debian) or your package manager</li>
+        </ul>
+        <p>Check that Git is installed:</p>
+        <div class="code-block">
+<pre>git --version</pre>
+        </div>
+        <p>You should see something like <code>git version 2.x.x</code>.</p>
+
+        <h2>Configure Git (First Time Only)</h2>
+        <p>Tell Git your name and email so your commits are labeled correctly:</p>
+        <div class="code-block">
+<pre>git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"</pre>
+        </div>
+        <p>Use the same email you'll use for GitHub.</p>
+
+        <h2>Basic Git Workflow</h2>
+        <p>You'll use these steps over and over:</p>
+        <ol>
+            <li><strong>Initialize</strong> a repo in your project (once)</li>
+            <li><strong>Add</strong> files you want to save</li>
+            <li><strong>Commit</strong> to create a snapshot</li>
+        </ol>
+
+        <h3>1. Initialize a Repository</h3>
+        <p>Open a terminal in your project folder (the folder that contains <code>index.html</code>) and run:</p>
+        <div class="code-block">
+<pre>git init</pre>
+        </div>
+        <p>This creates a hidden <code>.git</code> folder. Your project is now a <strong>Git repository</strong>.</p>
+
+        <h3>2. Check Status</h3>
+        <p>See which files are new or changed:</p>
+        <div class="code-block">
+<pre>git status</pre>
+        </div>
+        <p>New and modified files appear as "untracked" or "changes not staged for commit".</p>
+
+        <h3>3. Add Files</h3>
+        <p>Stage the files you want to include in your next snapshot:</p>
+        <div class="code-block">
+<pre># Add a single file
+git add index.html
+
+# Add all files in the current folder
+git add .
+
+# Add all HTML files
+git add *.html</pre>
+        </div>
+        <p>After <code>git add</code>, run <code>git status</code> again—you'll see files listed as "staged for commit".</p>
+
+        <h3>4. Commit</h3>
+        <p>Create a snapshot with a short message describing what you did:</p>
+        <div class="code-block">
+<pre>git commit -m "Add first lesson and index page"</pre>
+        </div>
+        <p>Every commit needs a message. Use present tense and be clear: "Add contact form", "Fix button style", "Update Lesson 3".</p>
+
+        <h3>Quick Reference</h3>
+        <div class="code-block">
+<pre>git init              # Turn current folder into a Git repo (once)
+git status             # See what's changed
+git add .              # Stage all changes
+git add filename       # Stage one file
+git commit -m "msg"    # Save a snapshot with a message</pre>
+        </div>
+
+        <h2>.gitignore</h2>
+        <p>A <code>.gitignore</code> file tells Git which files <strong>not</strong> to track (e.g., system files, secrets, build output).</p>
+        <p>Create a file named <code>.gitignore</code> in your project root with one line per pattern:</p>
+        <div class="code-block">
+<pre># OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+node_modules/</pre>
+        </div>
+        <p>Then run <code>git add .</code> and <code>git commit -m "Add .gitignore"</code>. Git will ignore the listed files.</p>
+
+        <h2>Exercise 1: Run Your Project Locally</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <ol>
+                <li>Choose one method (Live Server, Python, or Node) and run this lesson project on a local server</li>
+                <li>Open <code>index.html</code> via <code>http://localhost:...</code> (not <code>file://</code>)</li>
+                <li>Click through a few lessons and confirm links and styles work</li>
+            </ol>
+        </div>
+
+        <h2>Exercise 2: Make Your First Commit</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>In a <strong>copy</strong> of this project (or a new folder with a simple <code>index.html</code>):</p>
+            <ol>
+                <li>Open terminal in that folder and run <code>git init</code></li>
+                <li>Run <code>git status</code> and note which files are listed</li>
+                <li>Create a <code>.gitignore</code> with at least <code>.DS_Store</code> (Mac) or <code>Thumbs.db</code> (Windows)</li>
+                <li>Run <code>git add .</code> then <code>git commit -m "Initial commit"</code></li>
+                <li>Run <code>git status</code> again—it should say "nothing to commit, working tree clean"</li>
+            </ol>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>How to run a project on a local server (Live Server, Python, or Node)</li>
+            <li>What Git is and why we use version control</li>
+            <li>Installing and configuring Git</li>
+            <li>Basic commands: <code>git init</code>, <code>git status</code>, <code>git add</code>, <code>git commit</code></li>
+            <li>Using <code>.gitignore</code> to exclude files from Git</li>
+        </ul>
+
+        <div class="tip">
+            <strong>Next:</strong> In Lesson 8, you'll create a GitHub account, create a remote repository, and push your code so it's backed up and shareable online!
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson6.html">Previous Lesson</a>
+        <a href="lesson8.html">Next Lesson</a>
+    </div>
+</body>
+</html>

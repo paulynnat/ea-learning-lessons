@@ -10,7 +10,7 @@ Taught by Lin, Kai Jie and Elleron Asia
 
 1. Download all files to your computer
 2. Open `index.html` in your web browser
-3. Follow the lessons in order (Lesson 1 through Lesson 6)
+3. Follow the lessons in order (Lesson 1 through Lesson 8)
 
 ## Requirements
 
@@ -31,12 +31,18 @@ Taught by Lin, Kai Jie and Elleron Asia
 - Lesson 5: JavaScript Basics - Variables and Functions
 - Lesson 6: JavaScript Interactivity - Events and DOM
 
+**GitHub Lessons**
+- Lesson 7: Local Server & Git Basics - Run Locally and Version Control
+- Lesson 8: GitHub - Push & Collaborate
+
 ## File Structure
 
 Each lesson consists of:
 - `.html` file - Main lesson content
 - `.css` file - Styling for demonstrations
 - `.js` file - Interactive code examples (Lessons 5 & 6)
+
+GitHub lessons (7 & 8) use only `.html` and shared `lesson-styles.css`.
 
 Shared files:
 - `lesson-styles.css` - Common styles for all lessons

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8: GitHub - Push & Collaborate</title>
+    <link rel="stylesheet" href="lesson-styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Lesson 8: GitHub - Push & Collaborate</h1>
+        <p>Put your code on GitHub and learn the push/pull workflow</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson7.html">Previous Lesson</a>
+    </div>
+
+    <div class="content">
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>What GitHub is and why it's useful</li>
+            <li>Creating a GitHub account and repository</li>
+            <li>Connecting your local Git repo to GitHub (remote)</li>
+            <li>Pushing your commits to GitHub</li>
+            <li>Cloning a repository to get a copy on your computer</li>
+            <li>Basic workflow: local server → commit → push to GitHub</li>
+        </ul>
+
+        <h2>What is GitHub?</h2>
+        <p><strong>GitHub</strong> is a website that hosts Git repositories in the cloud. It lets you:</p>
+        <ul>
+            <li>Back up your code online</li>
+            <li>Share your projects (e.g., in a portfolio or with a team)</li>
+            <li>Collaborate with others using the same Git workflow</li>
+            <li>Use GitHub Pages to host simple websites for free</li>
+        </ul>
+        <p>Git is the tool (version control). GitHub is the place where you store and share your Git repositories.</p>
+
+        <h2>Create a GitHub Account</h2>
+        <ol>
+            <li>Go to <a href="https://github.com" target="_blank">github.com</a></li>
+            <li>Click <strong>Sign up</strong> and create an account (email, password, username)</li>
+            <li>Verify your email if prompted</li>
+        </ol>
+        <p>Your profile URL will be <code>https://github.com/your-username</code>.</p>
+
+        <h2>Create a New Repository</h2>
+        <p>A <strong>repository</strong> (repo) is one project on GitHub.</p>
+        <ol>
+            <li>On GitHub, click the <strong>+</strong> in the top-right and choose <strong>New repository</strong></li>
+            <li>Give it a name (e.g. <code>my-first-website</code>)</li>
+            <li>Add a short description if you like</li>
+            <li>Choose <strong>Public</strong></li>
+            <li><strong>Do not</strong> check "Add a README" or "Add .gitignore" if you already have a local project—you'll push existing code</li>
+            <li>Click <strong>Create repository</strong></li>
+        </ol>
+        <p>GitHub will show you a page with commands. You'll use the "push an existing repository" section.</p>
+
+        <h2>Connect Your Local Repo to GitHub (Remote)</h2>
+        <p>Your code lives in two places: <strong>local</strong> (your computer) and <strong>remote</strong> (GitHub). You link them once, then push and pull.</p>
+
+        <h3>1. Add the Remote</h3>
+        <p>In your project folder (where you ran <code>git init</code>), run this—replace <code>YOUR-USERNAME</code> and <code>YOUR-REPO-NAME</code> with your GitHub username and repo name:</p>
+        <div class="code-block">
+<pre>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git</pre>
+        </div>
+        <p><strong>Example:</strong> If your username is <code>johndev</code> and repo is <code>my-first-website</code>:</p>
+        <div class="code-block">
+<pre>git remote add origin https://github.com/johndev/my-first-website.git</pre>
+        </div>
+        <p><code>origin</code> is the default name for the main remote. You only run this once per project.</p>
+
+        <h3>2. Verify the Remote</h3>
+        <div class="code-block">
+<pre>git remote -v</pre>
+        </div>
+        <p>You should see <code>origin</code> and the GitHub URL.</p>
+
+        <h2>Push Your Code to GitHub</h2>
+        <p><strong>Push</strong> sends your commits from your computer to GitHub.</p>
+
+        <h3>First Push (Set Up the Branch)</h3>
+        <p>If this is the first time pushing, you may need to set the default branch name and push:</p>
+        <div class="code-block">
+<pre># Make sure you have at least one commit
+git add .
+git commit -m "Initial commit"
+
+# Push to GitHub (first time)
+git branch -M main
+git push -u origin main</pre>
+        </div>
+        <p><code>-u origin main</code> means: use <code>origin</code> and the branch <code>main</code>, and remember this so next time you can just run <code>git push</code>.</p>
+
+        <h3>Later Pushes</h3>
+        <p>After you make more commits locally:</p>
+        <div class="code-block">
+<pre>git add .
+git commit -m "Add new lesson page"
+git push</pre>
+        </div>
+        <p>Refresh your repo on GitHub—you'll see your latest files and commits.</p>
+
+        <h2>Authentication: Logging In to GitHub from the Terminal</h2>
+        <p>When you run <code>git push</code>, Git needs to prove you're allowed to change that repo. GitHub no longer accepts account passwords for this.</p>
+
+        <h3>Option 1: HTTPS with Personal Access Token (PAT)</h3>
+        <ol>
+            <li>On GitHub: <strong>Settings</strong> → <strong>Developer settings</strong> → <strong>Personal access tokens</strong> → <strong>Tokens (classic)</strong></li>
+            <li>Click <strong>Generate new token (classic)</strong></li>
+            <li>Give it a name (e.g. "My laptop"), choose an expiry, and check <strong>repo</strong></li>
+            <li>Generate and <strong>copy the token</strong> (you won't see it again!)</li>
+            <li>When you <code>git push</code>, use your GitHub username and paste the token as the password</li>
+        </ol>
+        <p>You can save the token in your system's credential manager so you don't type it every time.</p>
+
+        <h3>Option 2: SSH Key (Recommended for Regular Use)</h3>
+        <p>SSH lets you push without typing a password each time.</p>
+        <ol>
+            <li>Generate a key: <code>ssh-keygen -t ed25519 -C "your.email@example.com"</code> (press Enter to accept defaults)</li>
+            <li>Start the agent and add the key: <code>eval "$(ssh-agent -s)"</code> then <code>ssh-add ~/.ssh/id_ed25519</code></li>
+            <li>Copy your public key: <code>cat ~/.ssh/id_ed25519.pub</code> (copy the whole line)</li>
+            <li>On GitHub: <strong>Settings</strong> → <strong>SSH and GPG keys</strong> → <strong>New SSH key</strong> → paste and save</li>
+            <li>Change your remote to SSH: <code>git remote set-url origin git@github.com:YOUR-USERNAME/YOUR-REPO-NAME.git</code></li>
+        </ol>
+        <p>After that, <code>git push</code> uses your SSH key instead of a password.</p>
+
+        <div class="tip">
+            <strong>Beginner tip:</strong> Start with a Personal Access Token (HTTPS). You can switch to SSH later when you're comfortable.
+        </div>
+
+        <h2>Clone: Get a Copy of a Repo on Your Computer</h2>
+        <p>If a project already exists on GitHub and you want to work on it locally:</p>
+        <div class="code-block">
+<pre># Clone via HTTPS
+git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+
+# Clone via SSH (if you use SSH keys)
+git clone git@github.com:YOUR-USERNAME/YOUR-REPO-NAME.git</pre>
+        </div>
+        <p>This creates a folder with the repo name and downloads all files and history. Then <code>cd YOUR-REPO-NAME</code> and start working. When you make changes, use <code>git add</code>, <code>git commit</code>, and <code>git push</code> as before.</p>
+
+        <h2>Pull: Get Updates from GitHub</h2>
+        <p>If you (or someone else) made changes on GitHub and you want those changes on your computer:</p>
+        <div class="code-block">
+<pre>git pull origin main</pre>
+        </div>
+        <p>Or, if you already set <code>main</code> as upstream: <code>git pull</code>.</p>
+
+        <h2>Full Workflow: Local Server → Commit → Push</h2>
+        <p>Here's the complete flow from "run locally" to "code on GitHub":</p>
+        <div class="code-block">
+<pre># 1. Run your project locally (e.g. Live Server, or python3 -m http.server 8000)
+# 2. Make changes and test in the browser
+
+# 3. When happy, save a snapshot with Git
+git add .
+git status                    # optional: check what you're committing
+git commit -m "Describe your change"
+
+# 4. Send to GitHub
+git push</pre>
+        </div>
+        <p>Repeat steps 2–4 whenever you finish a chunk of work. Your code is versioned locally and backed up on GitHub.</p>
+
+        <h2>Quick Reference</h2>
+        <div class="code-block">
+<pre>git remote add origin https://github.com/USER/REPO.git   # Link local to GitHub (once)
+git remote -v                                              # Show remotes
+git branch -M main                                         # Rename branch to main (once)
+git push -u origin main                                    # First push
+git push                                                   # Later pushes
+git pull                                                   # Get updates from GitHub
+git clone https://github.com/USER/REPO.git                 # Get a copy of a repo</pre>
+        </div>
+
+        <h2>Exercise 1: Push This Project to GitHub</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <ol>
+                <li>Create a new repository on GitHub (e.g. <code>ea-learning-lessons</code>)</li>
+                <li>In this project folder, run <code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git</code></li>
+                <li>Run <code>git branch -M main</code> then <code>git push -u origin main</code></li>
+                <li>Log in with your username and Personal Access Token if asked</li>
+                <li>Refresh the repo on GitHub and confirm all lesson files appear</li>
+            </ol>
+        </div>
+
+        <h2>Exercise 2: Change Something and Push Again</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <ol>
+                <li>Add a single line to <code>README.md</code> (e.g. "I completed the GitHub lessons.")</li>
+                <li>Run <code>git add README.md</code>, then <code>git commit -m "Update README"</code>, then <code>git push</code></li>
+                <li>On GitHub, open <code>README.md</code> and confirm your change is there</li>
+            </ol>
+        </div>
+
+        <h2>Exercise 3: Clone on Another Folder (Optional)</h2>
+        <div class="exercise">
+            <h3>Your Task:</h3>
+            <p>Simulate getting the project on a "new computer":</p>
+            <ol>
+                <li>Create a new folder somewhere (e.g. <code>Desktop/my-copy</code>)</li>
+                <li>Open terminal in that folder and run <code>git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git</code></li>
+                <li>Enter the cloned folder and open <code>index.html</code>—you should see the same project</li>
+            </ol>
+        </div>
+
+        <h2>What You've Learned</h2>
+        <ul>
+            <li>What GitHub is and how it fits with Git</li>
+            <li>Creating a GitHub account and a new repository</li>
+            <li>Adding a remote (<code>git remote add origin ...</code>)</li>
+            <li>Pushing commits (<code>git push</code>) and authenticating (PAT or SSH)</li>
+            <li>Cloning a repo (<code>git clone</code>) and pulling updates (<code>git pull</code>)</li>
+            <li>Full workflow: run locally → commit → push to GitHub</li>
+        </ul>
+
+        <h2>What's Next?</h2>
+        <div class="tip">
+            <h3>You're Done With the GitHub Basics!</h3>
+            <p>You can now run your project on a local server and push it to GitHub. Keep practicing:</p>
+            <ul>
+                <li>Make small commits with clear messages</li>
+                <li>Push regularly so your work is backed up</li>
+                <li>Try GitHub Pages to host a static site from a repo (Settings → Pages → source: main branch)</li>
+                <li>Explore branches and pull requests when you're ready to collaborate</li>
+            </ul>
+            <p><strong>Resources:</strong></p>
+            <ul>
+                <li><a href="https://docs.github.com" target="_blank">GitHub Docs</a> - Official documentation</li>
+                <li><a href="https://git-scm.com/doc" target="_blank">Git Documentation</a> - Deep dive into Git</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Back to Home</a>
+        <a href="lesson7.html">Previous Lesson</a>
+    </div>
+</body>
+</html>
