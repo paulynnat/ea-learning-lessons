@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 5 - Combined Exercises</title>
+</head>
+<body>
+    <h1>Lesson 5 Combined Exercises</h1>
+
+    <!-- Exercise 1: Variables and Template Literals -->
+    <section>
+        <h2>Exercise 1: Variables</h2>
+        <p id="output"></p>
+    </section>
+
+    <!-- Exercise 2: Math Functions -->
+    <section>
+        <h2>Exercise 2: Math Functions</h2>
+        <p>Open the console to see the results of add, subtract, multiply, and divide.</p>
+    </section>
+
+    <!-- Exercise 3: DOM Manipulation -->
+    <section>
+        <h2>Exercise 3: DOM Manipulation</h2>
+        <h1 id="title">Original Title</h1>
+        <button id="change-btn">Click Me!</button>
+    </section>
+
+    <script>
+        // ---------------- Exercise 1 ----------------
+        let name = "Pauline";
+        let age = 25;
+        let favoriteColor = "Blue";
+
+        console.log("Name:", name);
+        console.log("Age:", age);
+        console.log("Favorite Color:", favoriteColor);
+
+        let message = `My name is ${name}, I am ${age} years old, and my favorite color is ${favoriteColor}.`;
+        console.log(message);
+
+        // Show message on the page
+        document.getElementById("output").textContent = message;
+
+        // ---------------- Exercise 2 ----------------
+        function add(a, b) {
+            return a + b;
+        }
+        function subtract(a, b) {
+            return a - b;
+        }
+        function multiply(a, b) {
+            return a * b;
+        }
+        function divide(a, b) {
+            return a / b;
+        }
+
+        console.log(add(5, 3));       // 8
+        console.log(subtract(10, 4)); // 6
+        console.log(multiply(7, 2));  // 14
+        console.log(divide(20, 5));   // 4
+
+        // ---------------- Exercise 3 ----------------
+        const title = document.getElementById("title");
+        const button = document.getElementById("change-btn");
+
+        button.addEventListener("click", function() {
+            title.textContent = "New Title!";
+            title.style.color = "blue";
+            console.log("Button was clicked! Title changed.");
+        });
+    </script>
+</body>
+</html>
