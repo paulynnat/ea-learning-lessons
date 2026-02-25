@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 6 - Combined Exercises</title>
+    <style>
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        #strength {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lesson 6 Combined Exercises</h1>
+
+    <!-- Exercise 1: Background Color Changer -->
+    <section>
+        <h2>Exercise 1: Background Color Changer</h2>
+        <button id="red-btn">Red</button>
+        <button id="blue-btn">Blue</button>
+        <button id="green-btn">Green</button>
+        <button id="reset-btn">Reset</button>
+    </section>
+
+    <!-- Exercise 2: Simple Calculator -->
+    <section>
+        <h2>Exercise 2: Simple Calculator</h2>
+        <input type="number" id="num1" placeholder="First number">
+        <input type="number" id="num2" placeholder="Second number">
+        <button id="add-btn">+</button>
+        <button id="subtract-btn">-</button>
+        <button id="multiply-btn">×</button>
+        <button id="divide-btn">÷</button>
+        <div id="result"></div>
+    </section>
+
+    <!-- Exercise 3: Password Strength Checker -->
+    <section>
+        <h2>Exercise 3: Password Strength Checker</h2>
+        <input type="password" id="password" placeholder="Enter your password">
+        <div id="strength"></div>
+    </section>
+
+    <script>
+        // ---------------- Exercise 1 ----------------
+        document.getElementById("red-btn").addEventListener("click", () => {
+            document.body.style.backgroundColor = "red";
+            console.log("Background changed to red");
+        });
+        document.getElementById("blue-btn").addEventListener("click", () => {
+            document.body.style.backgroundColor = "blue";
+            console.log("Background changed to blue");
+        });
+        document.getElementById("green-btn").addEventListener("click", () => {
+            document.body.style.backgroundColor = "green";
+            console.log("Background changed to green");
+        });
+        document.getElementById("reset-btn").addEventListener("click", () => {
+            document.body.style.backgroundColor = "white";
+            console.log("Background reset to white");
+        });
+
+        // ---------------- Exercise 2 ----------------
+        const num1 = document.getElementById("num1");
+        const num2 = document.getElementById("num2");
+        const resultDiv = document.getElementById("result");
+
+        function add(a, b) { return a + b; }
+        function subtract(a, b) { return a - b; }
+        function multiply(a, b) { return a * b; }
+        function divide(a, b) {
+            if (b === 0) return "Error: Division by zero!";
+            return a / b;
+        }
+
+        document.getElementById("add-btn").addEventListener("click", () => {
+            resultDiv.textContent = `Result: ${add(parseFloat(num1.value), parseFloat(num2.value))}`;
+        });
+        document.getElementById("subtract-btn").addEventListener("click", () => {
+            resultDiv.textContent = `Result: ${subtract(parseFloat(num1.value), parseFloat(num2.value))}`;
+        });
+        document.getElementById("multiply-btn").addEventListener("click", () => {
+            resultDiv.textContent = `Result: ${multiply(parseFloat(num1.value), parseFloat(num2.value))}`;
+        });
+        document.getElementById("divide-btn").addEventListener("click", () => {
+            resultDiv.textContent = `Result: ${divide(parseFloat(num1.value), parseFloat(num2.value))}`;
+        });
+
+        // ---------------- Exercise 3 ----------------
+        const passwordInput = document.getElementById("password");
+        const strengthDiv = document.getElementById("strength");
+
+        passwordInput.addEventListener("input", () => {
+            const password = passwordInput.value;
+            let score = 0;
+
+            if (password.length >= 8) score++;
+            if (/[0-9]/.test(password)) score++;
+            if (/[A-Z]/.test(password)) score++;
+
+            if (score <= 1) {
+                strengthDiv.textContent = "Weak";
+                strengthDiv.style.color = "red";
+            } else if (score === 2) {
+                strengthDiv.textContent = "Medium";
+                strengthDiv.style.color = "orange";
+            } else {
+                strengthDiv.textContent = "Strong";
+                strengthDiv.style.color = "green";
+            }
+        });
+    </script>
+</body>
+</html>
