@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 6 Challenge Project - Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        #quiz-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .option {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .option.correct {
+            background-color: #c8e6c9; /* green highlight */
+        }
+        .option.incorrect {
+            background-color: #ffcdd2; /* red highlight */
+        }
+        #controls {
+            margin-top: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Application</h1>
+    <div id="quiz-container">
+        <h2 id="question"></h2>
+        <div id="options"></div>
+        <div id="controls">
+            <button id="prev-btn">Previous</button>
+            <button id="next-btn">Next</button>
+            <button id="restart-btn" style="display:none;">Restart Quiz</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quiz = [
+            {
+                question: "What is the capital of France?",
+                options: ["Berlin", "Madrid", "Paris", "Rome"],
+                answer: 2
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: ["Earth", "Mars", "Jupiter", "Venus"],
+                answer: 1
+            },
+            {
+                question: "Who wrote 'Hamlet'?",
+                options: ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
+                answer: 1
+            },
+            {
+                question: "What is 5 × 6?",
+                options: ["11", "30", "56", "25"],
+                answer: 1
+            },
+            {
+                question: "Which language is primarily spoken in Brazil?",
+                options: ["Spanish", "Portuguese", "French", "English"],
+                answer: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswers = [];
+
+        const questionEl = document.getElementById("question");
+        const optionsEl = document.getElementById("options");
+        const resultEl = document.getElementById("result");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const restartBtn = document.getElementById("restart-btn");
+
+        function loadQuestion(index) {
+            const q = quiz[index];
+            questionEl.textContent = q.question;
+            optionsEl.innerHTML = "";
+            q.options.forEach((option, i) => {
+                const btn = document.createElement("div");
+                btn.textContent = option;
+                btn.classList.add("option");
+                btn.addEventListener("click", () => selectAnswer(i));
+                if (selectedAnswers[index] !== undefined) {
+                    if (i === selectedAnswers[index]) {
+                        btn.classList.add(i === q.answer ? "correct" : "incorrect");
+                    }
+                }
+                optionsEl.appendChild(btn);
+            });
+            resultEl.textContent = "";
+        }
+
+        function selectAnswer(optionIndex) {
+            selectedAnswers[currentQuestion] = optionIndex;
+            loadQuestion(currentQuestion);
+        }
+
+        function showScore() {
+            score = selectedAnswers.filter((ans, i) => ans === quiz[i].answer).length;
+            resultEl.textContent = `You scored ${score} out of ${quiz.length}`;
+            prevBtn.style.display = "none";
+            nextBtn.style.display = "none";
+            restartBtn.style.display = "inline-block";
+
+            // Bonus: Save high score
+            const highScore = localStorage.getItem("highScore") || 0;
+            if (score > highScore) {
+                localStorage.setItem("highScore", score);
+                resultEl.textContent += " (New High Score!)";
+            } else {
+                resultEl.textContent += ` (High Score: ${highScore})`;
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            selectedAnswers = [];
+            prevBtn.style.display = "inline-block";
+            nextBtn.style.display = "inline-block";
+            restartBtn.style.display = "none";
+            loadQuestion(currentQuestion);
+        }
+
+        prevBtn.addEventListener("click", () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+            }
+        });
+
+        nextBtn.addEventListener("click", () => {
+            if (currentQuestion < quiz.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+            } else {
+                showScore();
+            }
+        });
+
+        restartBtn.addEventListener("click", restartQuiz);
+
+        // Initial load
+        loadQuestion(currentQuestion);
+    </script>
+</body>
+</html>
