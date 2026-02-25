@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 4 - Combined Exercises</title>
+    <style>
+        /* Exercise 1: Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 15px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Exercise 2: Responsive Card Layout */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .card {
+            width: 250px;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid gray;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #0066cc;
+            text-align: center;
+        }
+        .card p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Exercise 3: Centered Box */
+        .container {
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightcoral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Exercise 1: Navigation Bar -->
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Exercise 2: Responsive Card Layout -->
+    <div class="card-container">
+        <div class="card">
+            <h3>Card 1</h3>
+            <p>This is the content of the first card.</p>
+        </div>
+        <div class="card">
+            <h3>Card 2</h3>
+            <p>This is the content of the second card.</p>
+        </div>
+        <div class="card">
+            <h3>Card 3</h3>
+            <p>This is the content of the third card.</p>
+        </div>
+    </div>
+
+    <!-- Exercise 3: Centered Box -->
+    <div class="container">
+        <div class="box">
+            Centered Content
+        </div>
+    </div>
+</body>
+</html>
