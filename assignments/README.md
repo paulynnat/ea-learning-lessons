@@ -2,7 +2,7 @@
 
 
 
-This folder contains my completed assignments and practice files based on the \*\*EA Learning Lessons\*\* curriculum.  
+This folder contains my completed assignments and practice files based on the \*\*EA Learning Lessons\*\* curriculum
 
 I’m using this space to document my journey and growth in web development.
 
